@@ -107,15 +107,25 @@ services:
     volumes_source:
         image: tianon/true
         volumes:
-            - ../api:/var/www/laravel
-            - ../ui:/var/www/ui
+            - api-sync:/var/www/laravel:rw
+            - angular-sync:/var/www/ui:rw
 
 ### Databases Data Container ################################
 
     volumes_data:
         image: tianon/true
         volumes:
-            - ./data/postgres:/var/lib/postgresql/data
-            - ./data/sessions:/sessions
+            - postgres-sync:/var/lib/postgresql/data:rw
+            - sessions-sync:/sessions:rw
 
 ### Add more Containers below ###############################
+
+volumes:
+  api-sync:
+    external: true
+  angular-sync:
+    external: true
+  postgres-sync:
+    external: true
+  sessions-sync:
+    external: true
