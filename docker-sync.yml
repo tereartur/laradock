@@ -1,0 +1,21 @@
+syncs:
+  api-sync:
+    src: '../api'
+    dest: '/var/www/laravel'
+    sync_strategy: 'unison'
+    sync_excludes: ['.git', '.idea', '.tmp', 'node_modules']
+    sync_excludes_type: 'Name'
+  angular-sync:
+    src: '../ui'
+    dest: '/var/www/ui'
+    sync_strategy: 'unison'
+    sync_excludes: ['node_modules', '.git']
+    sync_excludes_type: 'Name'
+  postgres-sync:
+    src: './data/postgres'
+    dest: '/var/lib/postgresql/data'
+    sync_strategy: 'unison'
+  sessions-sync:
+    src: './data/sessions'
+    dest: '/sessions'
+    sync_strategy: 'unison'
